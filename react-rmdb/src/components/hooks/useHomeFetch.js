@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { POPULAR_BASE_URL } from '../../config';
 
-export const useHomeFetch = () => {
+export const useHomeFetch = searchTerm => {
   const [state, setState] = useState({ movies: [] });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -36,6 +36,12 @@ export const useHomeFetch = () => {
   useEffect(() => {
     fetchMovies(POPULAR_BASE_URL);
   }, [])
+
+  useEffect(() => {
+    if(!searchTerm) {
+
+    }
+  })
 
   return [{ state, loading, error}, fetchMovies];
 }
